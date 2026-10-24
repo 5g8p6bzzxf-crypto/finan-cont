@@ -1,0 +1,80 @@
+/* Estilos compartilhados e componentes reutilizáveis do FinanCont. */
+:root {
+  --azul: #1E3A8A;
+  --verde: #16A34A;
+  --vermelho: #DC2626;
+  --fundo: #F3F4F6;
+  --texto: #1f2937;
+  --branco: #ffffff;
+  --sombra-card: 0 8px 24px rgb(15 23 42 / 6%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: Inter, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--verde);
+  outline-offset: 3px;
+}
+
+.btn-primary {
+  background: var(--azul);
+  color: var(--branco);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: #172f70;
+}
+
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: var(--branco);
+  box-shadow: var(--sombra-card);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn {
+    transition: none;
+  }
+}

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Organize suas finanças com o FinanCont. Acompanhe lançamentos, contas e saldo em um só lugar.">
+  <title>FinanCont | Gestão financeira simples</title>
+  <link rel="stylesheet" href="src/css/base.css">
+  <style>
+    /* Estilos específicos do layout da página inicial. */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+
+    .brand {
+      color: var(--azul);
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+    }
+
+    .header-link {
+      color: var(--azul);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .header-link:hover,
+    .header-link:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .hero {
+      padding: 88px 20px 96px;
+      background: linear-gradient(135deg, #eff6ff 0%, var(--fundo) 72%);
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--verde);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      margin: 0 auto 20px;
+      color: var(--azul);
+      font-size: clamp(2.35rem, 6vw, 4.2rem);
+      letter-spacing: -0.055em;
+      line-height: 1.08;
+    }
+
+    .hero-description {
+      max-width: 620px;
+      margin: 0 auto 30px;
+      color: #4b5563;
+      font-size: 1.12rem;
+      line-height: 1.7;
+    }
+
+    .section {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 76px 0;
+    }
+
+    .section-heading {
+      max-width: 640px;
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+
+    .section-heading h2,
+    .cta h2 {
+      margin: 0 0 12px;
+      color: var(--azul);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      min-height: 190px;
+      padding: 24px;
+    }
+
+    .feature-icon {
+      display: inline-grid;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 18px;
+      place-items: center;
+      border-radius: 12px;
+      background: #eff6ff;
+      font-size: 1.35rem;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 8px;
+      color: var(--azul);
+      font-size: 1.05rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: #6b7280;
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    .steps-section {
+      background: #fff;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .step-number {
+      display: grid;
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--azul);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .step h3 {
+      margin: 2px 0 8px;
+      color: var(--azul);
+      font-size: 1.05rem;
+    }
+
+    .step p {
+      margin: 0;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .cta-wrap {
+      padding: 0 20px 76px;
+    }
+
+    .cta {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 48px 24px;
+      border-radius: 20px;
+      background: var(--azul);
+      color: #fff;
+      text-align: center;
+    }
+
+    .cta h2 {
+      color: #fff;
+    }
+
+    .cta p {
+      margin: 0 0 24px;
+      color: #dbeafe;
+      line-height: 1.6;
+    }
+
+    .cta .btn-primary {
+      background: #fff;
+      color: var(--azul);
+    }
+
+    .cta .btn-primary:hover,
+    .cta .btn-primary:focus-visible {
+      background: #eff6ff;
+    }
+
+    .site-footer {
+      padding: 22px 20px;
+      background: #e5e7eb;
+      color: #4b5563;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .site-footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 800px) {
+      .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .site-header {
+        width: calc(100% - 32px);
+      }
+
+      .hero {
+        padding: 64px 16px 72px;
+      }
+
+      .section {
+        width: calc(100% - 32px);
+        padding: 60px 0;
+      }
+
+      .feature-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        min-height: auto;
+      }
+
+      .cta-wrap {
+        padding: 0 16px 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navegação principal: acesso direto à página de login. -->
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="FinanCont, página inicial">FinanCont</a>
+    <a class="header-link" href="src/pages/login.html">Entrar</a>
+  </header>
+
+  <main>
+    <!-- Apresentação do sistema e chamada de entrada. -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow">Mais clareza para suas finanças</p>
+        <h1 id="hero-title">Sua vida financeira, organizada em um só lugar.</h1>
+        <p class="hero-description">
+          Com o FinanCont, acompanhe receitas, despesas e compromissos para tomar decisões com mais tranquilidade.
+        </p>
+        <a class="btn btn-primary" href="src/pages/login.html">Começar a usar</a>
+      </div>
+    </section>
+
+    <!-- Recursos planejados para ajudar na organização financeira. -->
+    <section class="section" aria-labelledby="features-title">
+      <div class="section-heading">
+        <h2 id="features-title">Funcionalidades</h2>
+        <p>Os recursos essenciais para entender e acompanhar suas finanças.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="card feature-card">
+          <span class="feature-icon" aria-hidden="true">📊</span>
+          <h3>Dashboard</h3>
+          <p>Tenha uma visão geral do seu saldo e da sua situação financeira.</p>
+        </article>
+        <article class="card feature-card">
+          <span class="feature-icon" aria-hidden="true">🧾</span>
+          <h3>Lançamentos</h3>
+          <p>Registre e consulte suas receitas e despesas com praticidade.</p>
+        </article>
+        <article class="card feature-card">
+          <span class="feature-icon" aria-hidden="true">📅</span>
+          <h3>Contas a pagar e a receber</h3>
+          <p>Acompanhe compromissos, valores e vencimentos importantes.</p>
+        </article>
+        <article class="card feature-card">
+          <span class="feature-icon" aria-hidden="true">📈</span>
+          <h3>Relatórios</h3>
+          <p>Consulte um resumo das movimentações organizadas por período.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Explicação breve do fluxo de uso do sistema. -->
+    <section class="steps-section" aria-labelledby="steps-title">
+      <div class="section">
+        <div class="section-heading">
+          <h2 id="steps-title">Como funciona</h2>
+          <p>Comece com poucos passos e mantenha suas informações em dia.</p>
+        </div>
+        <div class="steps-grid">
+          <article class="step">
+            <span class="step-number" aria-hidden="true">1</span>
+            <div>
+              <h3>Entre</h3>
+              <p>Acesse sua conta para começar a organizar suas finanças.</p>
+            </div>
+          </article>
+          <article class="step">
+            <span class="step-number" aria-hidden="true">2</span>
+            <div>
+              <h3>Registre lançamentos</h3>
+              <p>Adicione receitas e despesas conforme elas acontecem.</p>
+            </div>
+          </article>
+          <article class="step">
+            <span class="step-number" aria-hidden="true">3</span>
+            <div>
+              <h3>Acompanhe o saldo</h3>
+              <p>Consulte suas informações e veja como suas finanças evoluem.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Segunda chamada para ação ao final do conteúdo. -->
+    <section class="cta-wrap" aria-labelledby="cta-title">
+      <div class="cta">
+        <h2 id="cta-title">Dê o próximo passo na sua organização financeira.</h2>
+        <p>Comece a acompanhar suas finanças com o FinanCont.</p>
+        <a class="btn btn-primary" href="src/pages/login.html">Começar a usar</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Projeto acadêmico – GTI 2º período</p>
+  </footer>
+</body>
+</html>
