@@ -10,6 +10,10 @@ O FinanCont tem como proposta reunir em um só lugar recursos para organizar mov
 
 Aplicar conhecimentos de desenvolvimento web na criação de uma ferramenta simples e acessível para registrar receitas e despesas, acompanhar compromissos financeiros e visualizar informações de forma organizada.
 
+## Acesso ao projeto
+
+Acesse a versão publicada: [financont.vercel.app](https://financont.vercel.app).
+
 ## Funcionalidades planejadas
 
 - **Login:** acesso à área do usuário.
